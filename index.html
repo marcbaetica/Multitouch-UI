@@ -1,0 +1,26 @@
+<html>
+	
+	<head>
+		<script src="hammer.min.js"></script>
+		<style type="text/css">
+			#AreaToClick {
+		  		background: silver;
+				height: 300px;
+				text-align: center;
+				font: 30px/300px Helvetica, Arial, sans-serif;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="AreaToClick">This is the area.</div>
+
+		<script>
+		    var element = document.getElementById('AreaToClick');
+		    var hammertime = Hammer(element).on("tap", function(event) {
+		        alert('Thank you for the tap!');
+		    });
+		</script>
+	</body>
+
+</html>
