@@ -13,7 +13,7 @@
 	</head>
 	
 	<body>
-		<div id="AreaToClick">You can click, drag left/right, or press here.</div>
+		<div id="AreaToClick">You can click, drag N/S/E/W, or press here.</div>
 
 		<script>
 		    
@@ -24,10 +24,22 @@
 		    // let the pan gesture support all directions - this will block the vertical scrolling on a touch-device while on the element
 		    hammertime.get('pan').set({ direction: Hammer.DIRECTION_ALL });
 		    
+			//create a pitch and rotate recognizer - these require 2 pointers
+			var pitch = new Hammer.Pitch();
+			var rotate = new Hammer.Rotate();
+			//and recognize both at the same time
+			pitch.recognizeWith(rotate);
+
+			//add to Manager
+			hammertime.on('pitch rotate', function (event) {
+				AreaToClick.textContent += event.type + " ";
+			});
+
 		    //listen to 4 types of events
 		    hammertime.on('tap panleft panright press panup pandown', function (event) {
 		    	AreaToClick.textContent = event.type + " gesture detected.";
 		    });
+
 		</script>
 	</body>
 
