@@ -35,7 +35,7 @@
 			var pitch = new Hammer.Pitch();
 			var rotate = new Hammer.Rotate();
 			//and recognize both at the same time
-			pitch.recognizeWith(rotate);
+			rotate.recognizeWith(pitch);
 
 		    //add to Manager
 			hammertime.on('pitch rotate', function (event) {
