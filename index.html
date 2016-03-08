@@ -21,11 +21,14 @@
 		    var element = document.getElementById('AreaToClick');
 		    var hammertime = Hammer(element);
 
+		    //tap is set without the preset organizers and mapped to each emitter of two taps
+		    hammertime.add (new Hammer.Tap({ event: "doubletap", taps: 2}) );
+		    
 		    // let the pan gesture support all directions - this will block the vertical scrolling on a touch-device while on the element
 		    hammertime.get('pan').set({ direction: Hammer.DIRECTION_ALL });
 		    
-		    //listen to 4 types of events
-		    hammertime.on('tap panleft panright press panup pandown', function (event) {
+		    //listen to seven types of events
+		    hammertime.on('tap panleft panright press panup pandown doubletap', function (event) {
 		    	AreaToClick.textContent = event.type + " gesture detected.";
 		    });
 
